@@ -6,7 +6,7 @@
 /*   By: yongjule <yongjule@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 12:39:05 by yongjule          #+#    #+#             */
-/*   Updated: 2021/12/28 12:48:01 by yongjule         ###   ########.fr       */
+/*   Updated: 2022/01/15 22:37:04 by yongjule         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,10 @@ int	hidden_by_cn(t_pt_info *pt_i, double *lp)
 		sub_vect(top_to_lp, lp, new_o);
 		if (fpclassify(vect_size(top_to_lp)) == FP_ZERO)
 			return (1);
-		if (signbit(atan(cn->radius / cn->height)
-				- acos(-1 * dot_product(top_to_lp
-						, cn->o_vect) / vect_size(top_to_lp))))
+		if (signbit(atan(cn->radius / cn->height) - acos(-1 * dot_product
+					(top_to_lp, cn->o_vect) / vect_size(top_to_lp))))
 			return (0);
-		if (!signbit(dot_product(top_to_lp, cn->o_vect) - cn->height))
+		if (!signbit(dot_product(top_to_lp, cn->o_vect) + cn->height))
 			return (0);
 		return (1);
 	}
